@@ -16,3 +16,10 @@
     transition: 0.4;
     cursor: pointer;
 }
+
+@media (max-width:379px){
+    .register__button{
+        margin-top: 143px;
+        width: 260px;
+    }
+}
