@@ -41,17 +41,20 @@ export default function App({}) {
 
   // получаем данные аватара и профиля с сервера
   useEffect(() => {
-    tokenApi
+    if (loggedIn) {
+      tokenApi
       .getUserData()
       .then((data) => {
         setCurrentUser(data);
       })
       .catch((err) => console.log(err));
-  }, []);
+    }
+  }, [loggedIn]);
 
   //Получение карточек
   useEffect(() => {
-    tokenApi
+    if (loggedIn) {
+      tokenApi
       .getInitialCards(cards)
       .then((card) => {
         setCards(
@@ -67,6 +70,7 @@ export default function App({}) {
       .catch((err) => {
         console.log(`Возникла глобальная ошибка , ${err}`);
       });
+    }
   }, [loggedIn]);
 
   function handleCardLike(card) {
